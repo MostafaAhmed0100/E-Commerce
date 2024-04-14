@@ -1,0 +1,11 @@
+<section class="mx-auto A my-3">
+  <div class="row g-3">
+    <div class="col-md-2" *ngFor="let item of categriesArr">
+      <div class="product text-center p-1  cursor-pointer" [routerLink]="['/detailsCateroies' , item._id]">
+        <img [src]="item.image" class="w-100" [alt]="item.title"  height="270">
+        <h3 class="h5">{{item.name}}</h3>
+      </div>
+
+    </div>
+  </div>
+</section>

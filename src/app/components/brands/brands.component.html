@@ -1,0 +1,18 @@
+<section  class="shadow my-3 mx-auto A">
+  <div class="row g-3">
+    <div class="col-md-2" *ngFor="let item of productBrand">
+      <div   class="product cursor-pointer text-center">
+
+               <div  class="p-2" [routerLink]="['/Details'  , item._id]">
+
+                 <img [src]="item.image"   class="w-100"  [alt]="item.name" height="250">
+                 <h3 class="h5">{{item.name}}</h3>
+               </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+

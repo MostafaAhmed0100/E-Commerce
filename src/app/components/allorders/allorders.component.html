@@ -1,0 +1,22 @@
+
+<section class="w-75 bg-main-light shadow mx-auto">
+  <div class="row">
+    <div  class="row"  *ngFor="let outerItem of allOrderArr">
+
+
+       <div class="row">
+        <div     class="col-md-3"     *ngFor="let innerItem of outerItem.cartItems">
+
+          <img [src]="innerItem.product.imageCover" alt="" class="w-100">
+        </div>
+       </div>
+     </div>
+
+    </div>
+
+
+
+</section>
+
+
+

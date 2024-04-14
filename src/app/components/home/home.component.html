@@ -1,0 +1,89 @@
+ <!--main slider-->
+<section  class="my-2">
+  <div class="row  g-0">
+    <div class="col-md-9">
+      <owl-carousel-o [options]="mainSlider">
+        <ng-template carouselSlide>
+          <div>
+            <img src="./assets/images/main-slider-1.jpeg"  class="w-100" alt="" height="400">
+          </div>
+        </ng-template>
+
+
+        <ng-template carouselSlide>
+         <div>
+            <img src="./assets/images/main-slider-2.jpeg" class="w-100" alt=""  height="400">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="col-md-3">
+
+       <div>
+        <img src="./assets/images/slide-1.jpeg" alt="" class="w-100" height="200">
+        <img src="./assets/images/slide-2.jpeg" alt="" class="w-100" height="200">
+       </div>
+
+    </div>
+  </div>
+</section>
+<!--   Categories   -->
+<section  class="my-2 text-center">
+
+  <owl-carousel-o [options]="categories">
+
+    <ng-container *ngFor="let item of sliderCategories">
+      <ng-template carouselSlide [id]="item.id">
+        <div>
+          <img [src]="item.image" [alt]="item.title" [title]="item.title" height="270">
+          <h3  class="h5">{{item.name}}</h3>
+        </div>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
+</section>
+
+
+
+
+<!--   product   -->
+<section class="my-4  A mx-auto">
+  <h2 class="h4 text-main">shop popular categories</h2>
+    <input type="search" class="form-control w-50 mx-auto my-2"     [(ngModel)]="termSearch"     placeholder="search ......">
+    <div class="row g-3">
+      <div class="col-md-2"  *ngFor="let item of productHomeArr.slice(0,12)| search:termSearch"  height="100">
+
+
+        <div class="product  cursor-pointer">
+
+            <i class="fa-solid fa-trash-can ms-3 mt-2 text-success remove"  (click)="removeWishList(item._id)"></i>
+             <i class="fa-regular fa-heart  heart"   (click)="addWishList(item._id)" ></i>
+
+
+          <div  class="p-2"  [routerLink]="['/details' , item._id]">
+            <img [src]="item.imageCover" class="w-100" [alt]="item.title">
+            <h3 class="small text-main" >{{item.category.name}}</h3>
+            <h4  class="small">{{item.title  | termtext:3  }}</h4>
+
+            <p>{{  myDate | textdate  }}</p>
+
+            <div class="d-flex justify-content-between align-items-center">
+                      <span>{{item.price  | currency:'EUR'}}</span>
+                      <div>
+                        <i class="fas fa-star rating-color"></i>
+                        <span class="text-muted">{{item.ratingsAverage}}</span>
+                      </div>
+             </div>
+          </div>
+          <button      (click)="addCard(item._id)"     class="btn-main w-100">Add Product</button>
+        </div>
+      </div>
+    </div>
+
+</section>
+
+
+
+
+

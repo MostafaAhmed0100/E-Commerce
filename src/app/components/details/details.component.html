@@ -1,0 +1,57 @@
+
+
+
+<section  class="w-75 mx-auto align-items-center shadow my-3">
+  <div class="row">
+
+
+
+    <div class="col-md-3">
+
+
+      <owl-carousel-o [options]="productSlider">
+
+        <ng-container *ngFor="let src of productDetails.images">
+          <ng-template carouselSlide >
+            <img [src]="src" [alt]="productDetails.title" [title]="productDetails.title"   class="w-100">
+          </ng-template>
+        </ng-container>
+
+      </owl-carousel-o>
+
+
+
+    </div>
+
+
+
+          <!--   product Detalis -->
+
+    <div class="col-md-9 d-flex justify-content-center align-items-center p-3">
+      <div>
+         <!-- <h3 class="h5">{{productDetails.category.name}}</h3> -->
+
+        <h4   class="h5">{{productDetails.description}}</h4>
+
+        <p class="h5">{{productDetails.title}}</p>
+
+
+        <div   class="d-flex justify-content-between">
+          <span>{{productDetails.price}} EGP</span>
+
+          <div  >
+            <i class="fas fa-star  rating-color"></i>
+            <span   class="text-muted">{{productDetails.ratingsAverage}}</span>
+
+          </div>
+        </div>
+        <button     (click)="addProductDetails(productDetails._id)"    class="btn-main w-100">Add Product</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+
+

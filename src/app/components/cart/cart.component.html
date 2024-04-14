@@ -1,0 +1,59 @@
+
+<section  class="w-75  bg-main-light mx-auto rounded-3 p-3 my-2 shadow"  *ngIf="cartDetalis else msg"  >
+
+  <button class="btn-main my-2" (click)="removeAll()">Remove All Cart  <i class="fas fa-trash-alt text-bg-dark"></i></button>
+  <h1>Shop Cart</h1>
+   <h3  class="text-main">Total Price:{{cartDetalis.totalCartPrice |currency:' EGP ' }}</h3>
+
+
+
+  <div class="row border-bottom pb-2   m-0"  *ngFor="let item of cartDetalis.products">
+   <div class="col-md-1">
+    <div>
+      <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+    </div>
+   </div>
+   <div class="col-md-11">
+
+
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div >
+        <h4 class="text-main   h5">{{item.product.title  | termtext:15}}</h4>
+        <span class="text-main  h5">Price:{{item.price}}</span>
+
+      </div>
+
+
+      <div >
+        <button class="btn  border border-success"   (click)="updateCart(item.product._id , item.count + 1)">+</button>
+
+        <span >{{item.count}}</span>
+
+        <button  class="btn border border-success"    (click)="updateRemoveCart(item.product._id , item.count - 1)"  >-</button>
+      </div>
+
+
+
+
+    </div>
+
+
+      <button class="btn m-0"   (click)="removeCartItem(item.product._id)"><i class="fas fa-trash  text-main"></i>Remove</button>
+
+
+
+   </div>
+
+
+
+  </div>
+
+  <button class="btn-main"      [routerLink]="['/checkout'  ,  cartDetalis._id]">Online Payment <img src="./assets/images/visa-1.svg" alt=""></button>
+  <button class="btn-main ms-1 py-3"   [routerLink]="['/cash' , cartDetalis._id]">Payment Cash <img src="./assets/images/shopping.jpg" class="A" alt=""></button>
+</section>
+
+      <ng-template #msg>
+        <h2 class="text-center text-danger">Your Cart Is Empty......</h2>
+      </ng-template>
+

@@ -1,0 +1,32 @@
+<section class="mx-auto A my-3">
+
+  <div class="row g-3">
+    <div class="col-md-2" *ngFor="let product of productsArr">
+
+      <div   class="product cursor-pointer" height="100" >
+        <i class="fa-solid fa-trash-can  text-success remove"  (click)="removeWishList(product._id)"></i>
+        <i class="fa-regular fa-heart  heart"  (click)="addWish(product._id)" ></i>
+
+            <div   [routerLink]="['/details'  ,  product._id]"  class="p-2">
+
+                  <img [src]="product.imageCover"   class="w-100"   [alt]="product.title">
+                  <h3  class="h5 text-success">{{product.category.name}}</h3>
+                  <h4   class="small">{{product.title | termtext:2}}</h4>
+                  <p>{{myDate | textdate}}</p>
+                  <div  class="d-flex justify-content-between align-items-center">
+                      <p>{{product.price}}EGP</p>
+                    <div>
+                      <i class="fas fa-star rating-color"></i>
+                      <p  class="text-muted">{{product.ratingsAverage}}</p>
+                    </div>
+
+                  </div>
+            </div>
+
+
+      <button class="btn-main w-100"   (click)="addCart(product._id)"   >Add Product</button>
+      </div>
+    </div>
+  </div>
+
+</section>

@@ -1,0 +1,31 @@
+<section class="w-80 my-4  mx-auto" *ngIf="wishList.length > 0; else msg">
+  <div class="row">
+    <div class="col-md-2" *ngFor="let item of wishList">
+      <div class="product" height="270">
+        <i class="fa-solid fa-trash-can ms-3 mt-2 text-success remove"  (click)="removeWishList(item._id)"></i>
+          <div   class="p-2"  [routerLink]="['/details' , item._id]">
+            <img [src]="item.imageCover" [alt]="item.title" class="w-100">
+            <h3  class="text-main small">{{item.category.name | termtext:3}}</h3>
+              <h4  class="h5">{{item.title | termtext:2}}</h4>
+              <p>{{myDate  | textdate}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+                 <p class="">{{item.price | currency:'EGP' }}</p>
+              <div>
+                <i class="fas fa-star  rating-color"></i>
+                <span  class="text-muted">{{item.ratingsAverage}}</span>
+              </div>
+            </div>
+          </div>
+        <button class="btn-main w-100"   (click)="addProductWish(item._id)">Add Product</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</section>
+
+
+<ng-template #msg>
+  <h2 class="text-center text-main">Your WishList Is Empty......</h2>
+</ng-template>
